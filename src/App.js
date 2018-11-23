@@ -14,26 +14,8 @@ class App extends Component {
     render() {
       let { value } = this.state 
         return (
-            <div className="demo first">
-                <h1 className="title">Controlled component</h1>
-                {/* <code>
-                  { JSON.stringify(this.state, null, 2) }
-                </code> */}
-                <div className="uncontrolled-input">
-                    <label>Uncontrolled component</label>
-                    <input placeholder="Uncontrolled" ref={this.ref} />
-                </div>
-                <div className="controlled-input">
-                    <label>Controlled component</label>
-                    <input
-                        placeholder="Controlled"
-                        value={value}
-                        onChange={e => this.setState({ value: e.target.value })}
-                    />
-                </div>
-                <div>
-                    <button onClick={this.submit}>Submit</button>
-                </div>
+            <div className="demo master">
+               Nothing here
             </div>
         );
     }
