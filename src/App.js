@@ -1,42 +1,78 @@
 import React, { Component } from "react";
 
-class App extends Component {
-    ref = React.createRef();
-
+class FilterableList extends React.Component {
     state = {
-        value: ""
+        filter: "",
+        items: [],
+        loading: true
     };
 
-    submit = () => {
-        alert(`Uncontrolled input value is "${this.ref.current.value}"`);
-    };
+    async componentDidMount() {
+        let res = await fetch(`https://reqres.in/api/users?per_page=20&page=1`);
+        let json = await res.json();
+        setTimeout(() => {
+            this.setState({ items: json.data, loading: false });
+        }, 1000);
+    }
 
     render() {
-      let { value } = this.state 
+        let { items, loading, filter } = this.state;
         return (
-            <div className="demo first">
-                <h1 className="title">Controlled component</h1>
-                {/* <code>
-                  { JSON.stringify(this.state, null, 2) }
-                </code> */}
-                <div className="uncontrolled-input">
-                    <label>Uncontrolled component</label>
-                    <input placeholder="Uncontrolled" ref={this.ref} />
-                </div>
-                <div className="controlled-input">
-                    <label>Controlled component</label>
+            <div>
+                <div>
+                    <label>Filter list</label>
                     <input
-                        placeholder="Controlled"
-                        value={value}
-                        onChange={e => this.setState({ value: e.target.value })}
+                        value={filter}
+                        onChange={e =>
+                            this.setState({ filter: e.target.value })
+                        }
                     />
                 </div>
                 <div>
-                    <button onClick={this.submit}>Submit</button>
+                    {loading && (
+                        <div className="row loading">Loading Users...</div>
+                    )}
+                    {items
+                        .filter(item => item.first_name.toLowerCase().startsWith(filter))
+                        .map(item => (
+                            <div key={item.id} className="row">
+                                {this.props.render(item)}
+                            </div>
+                        ))}
                 </div>
             </div>
         );
     }
 }
 
+class App extends Component {
+    render() {
+        return (
+            <div className="demo ch-4">
+                <h1 className="title">Render Props</h1>
+                <FilterableList
+                    render={item => (
+                        <div>
+                            {item.first_name} {item.last_name}
+                        </div>
+                    )}
+                />
+            </div>
+        );
+    }
+}
+
 export default App;
+
+
+
+
+
+/*
+<div className="custom-row">
+    <img src={item.avatar} />
+    <span className="name" style={{ color: 'red' }}>
+        {item.first_name} {item.last_name}
+    </span>
+</div>
+*/
