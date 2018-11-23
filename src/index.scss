@@ -57,6 +57,10 @@ input {
   font-weight: bold;
   color: #888;
 
+  &::placeholder{
+    color: #DDD;
+  }
+
   &:active, &:focus {
     border: solid 1px blue;
   }
