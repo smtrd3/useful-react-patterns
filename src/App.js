@@ -33,9 +33,12 @@ class FilterableList extends React.Component {
                         <div className="row loading">Loading Users...</div>
                     )}
                     {items
-                        .filter(item => item.first_name.toLowerCase().startsWith(filter))
+                        .filter(item =>
+                            item.first_name.toLowerCase().startsWith(filter)
+                        )
                         .map(item => (
                             <div key={item.id} className="row">
+                                {/* hint: this.props.children(item) */}
                                 {this.props.render(item)}
                             </div>
                         ))}
@@ -64,11 +67,8 @@ class App extends Component {
 
 export default App;
 
-
-
-
-
 /*
+//- Use the following snippet as render prop
 <div className="custom-row">
     <img src={item.avatar} />
     <span className="name" style={{ color: 'red' }}>
