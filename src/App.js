@@ -14,7 +14,7 @@ class App extends Component {
     render() {
       let { value } = this.state 
         return (
-            <div className="demo first">
+            <div className="demo ch-1">
                 <h1 className="title">Controlled component</h1>
                 {/* <code>
                   { JSON.stringify(this.state, null, 2) }
