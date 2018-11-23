@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,900');
+
+* {
+  font-family: 'Montserrat';
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -6,9 +13,80 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  user-select: none;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+  white-space: pre;
+  font-family: Monaco, Menlo, Consolas, "Courier New",
     monospace;
+    margin-bottom: 2em;
+    display: block;
+    color: #666;
+  padding: 1em;
+  background-color: #EAEAEA;
+  border-radius: 3px;
+}
+
+// title
+.title {
+  color: #666;
+  text-align: center;
+}
+
+// formstyling
+label,
+input {
+  display: block;
+  margin-bottom: .5em;
+}
+
+label {
+  color: #AAA;
+}
+
+input {
+  display: block;
+  width: 100%;
+  border: solid 1px #EAEAEA;
+  font-family: 'Montserrat';
+  border-radius: 3px;
+  outline: none;
+  font-size: 28px;
+  padding: .5em;
+  font-weight: bold;
+  color: #888;
+
+  &:active, &:focus {
+    border: solid 1px blue;
+  }
+}
+
+button {
+  display: block;
+  width: 100%;
+  border: none;
+  font-family: 'Montserrat';
+  font-weight: bold;
+  font-size: 20px;
+  background-color: #EEE;
+  padding: 1em;
+  outline: none;
+  border-radius: 3px;
+  transition: all .3s;
+  &:hover {
+    background-color: #DDD;
+  }
+  &:active {
+    background-color: #AAA;
+  }
+}
+
+
+.demo {
+  max-width: 600px;
+  margin: 5em auto;
+  &.first {
+
+  }
 }
