@@ -65,6 +65,9 @@ export default App;
 
 
 /*
+//- You can pass any number of additional params to HOC factory
+//- try passing external data fetcher and use that to retrieve the data
+
 async function getData() {
     let res = await fetch(`https://reqres.in/api/users?per_page=10&page=1`);
     let json = await res.json();
