@@ -82,6 +82,20 @@ button {
   }
 }
 
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  border: solid 1px #EAEAEA;
+  border-radius: 3px;
+  margin-bottom: 1em;
+
+  li {
+    display: block;
+    padding: 1em;
+    border-bottom: 1px solid #EAEAEA;
+  }
+}
 
 .demo {
   max-width: 600px;
