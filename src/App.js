@@ -3,10 +3,10 @@ import React, { Component } from "react";
 // List presentational component
 class List extends React.Component {
     render() {
-        let { items, loading } = this.props
+        let { items, loading } = this.props;
         return (
             <ul>
-                {loading && <li>Loading users list...</li>}
+                { loading && <li>Loading Users ...</li>}
                 {items.map(item => (
                     <li key={item.id}>
                         {item.first_name} {item.last_name}
@@ -17,8 +17,7 @@ class List extends React.Component {
     }
 }
 
-// container component
-class ListContainer extends React.Component {
+const withUsers = ComposedComponent => class extends React.Component {
     state = {
         items: [],
         loading: true
@@ -29,14 +28,19 @@ class ListContainer extends React.Component {
         let json = await res.json();
         setTimeout(() => {
             this.setState({ items: json.data, loading: false });
-        }, 1000)
+        }, 1000);
     }
 
-    render() {
-        let { items, loading } = this.state
-        return <List items={items} loading={loading}/>;
+    render() { 
+        let { items, loading } = this.state;
+
+        return (
+            <ComposedComponent {...this.props} items={items} loading={loading}/>
+        )
     }
-}
+};
+
+const ListWithUsers = withUsers(List)
 
 class App extends Component {
     ref = React.createRef();
@@ -47,12 +51,21 @@ class App extends Component {
 
     render() {
         return (
-            <div className="demo first">
+            <div className="demo ch-3">
                 <h1 className="title">Container</h1>
-                <ListContainer />
+                <ListWithUsers />
             </div>
         );
     }
 }
 
 export default App;
+
+
+/*
+async function getData() {
+    let res = await fetch(`https://reqres.in/api/users?per_page=10&page=1`);
+    let json = await res.json();
+    return json.data
+}
+*/
