@@ -17,6 +17,7 @@ class List extends React.Component {
     }
 }
 
+// withUser HOC factory
 const withUsers = ComposedComponent => class extends React.Component {
     state = {
         items: [],
@@ -40,6 +41,7 @@ const withUsers = ComposedComponent => class extends React.Component {
     }
 };
 
+// enhanced/composed List component
 const ListWithUsers = withUsers(List)
 
 class App extends Component {
