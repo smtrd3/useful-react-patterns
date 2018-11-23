@@ -3,9 +3,11 @@ import React, { Component } from "react";
 // List presentational component
 class List extends React.Component {
     render() {
+        let { items, loading } = this.props
         return (
             <ul>
-                {this.props.items.map(item => (
+                {loading && <li>Loading users list...</li>}
+                {items.map(item => (
                     <li key={item.id}>
                         {item.first_name} {item.last_name}
                     </li>
@@ -18,17 +20,21 @@ class List extends React.Component {
 // container component
 class ListContainer extends React.Component {
     state = {
-        items: []
+        items: [],
+        loading: true
     };
 
     async componentDidMount() {
         let res = await fetch(`https://reqres.in/api/users?per_page=10&page=1`);
         let json = await res.json();
-        this.setState({ items: json.data });
+        setTimeout(() => {
+            this.setState({ items: json.data, loading: false });
+        }, 1000)
     }
 
     render() {
-        return <List items={this.state.items} />;
+        let { items, loading } = this.state
+        return <List items={items} loading={loading}/>;
     }
 }
 
@@ -44,9 +50,6 @@ class App extends Component {
             <div className="demo first">
                 <h1 className="title">Container</h1>
                 <ListContainer />
-                <div>
-                    <button onClick={this.submit}>Submit</button>
-                </div>
             </div>
         );
     }
