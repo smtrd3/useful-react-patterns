@@ -21,12 +21,12 @@ class App extends Component {
                 </code> */}
                 <div className="uncontrolled-input">
                     <label>Uncontrolled component</label>
-                    <input placeholder="Uncontrolled" ref={this.ref} />
+                    <input placeholder="Uncontrolled Component" ref={this.ref} />
                 </div>
                 <div className="controlled-input">
                     <label>Controlled component</label>
                     <input
-                        placeholder="Controlled"
+                        placeholder="Controlled Component"
                         value={value}
                         onChange={e => this.setState({ value: e.target.value })}
                     />
