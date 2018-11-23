@@ -82,6 +82,22 @@ button {
   }
 }
 
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  border: solid 1px #EAEAEA;
+  border-radius: 3px;
+  margin-bottom: 1em;
+  box-shadow: 0 3px 10px rgba(black, .1);
+
+  li {
+    display: block;
+    padding: 1em;
+    border-bottom: 1px solid #EAEAEA;
+    color: #888;
+  }
+}
 
 .demo {
   max-width: 600px;
