@@ -102,7 +102,39 @@ ul {
 .demo {
   max-width: 600px;
   margin: 5em auto;
-  &.first {
 
+  &.ch-5 {
+    button {
+      display: inline-block;
+      font-size: 18px;
+      width: auto;
+      margin-right: .5em;
+    }
+
+    .dialog {
+      border: solid 1px #EAEAEA;
+      border-radius: 3px;
+      box-shadow: 0 3px 20px rgba(black, .1);
+      margin-top: 3em;
+
+      &-header {
+        padding: 1em;
+        border-bottom: 1px solid #EAEAEA;
+        color: #999;
+        background-color: #FAFAFA;
+      }
+
+      &-body {
+        padding: 1em;
+        border-bottom: 1px solid #EAEAEA;
+        line-height: 1.8em;
+        color: #888;
+        font-weight: bold;
+      }
+
+      &-actions {
+        padding: 1em;
+      }
+    }
   }
 }

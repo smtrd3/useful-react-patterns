@@ -1,39 +1,45 @@
 import React, { Component } from "react";
 
-class App extends Component {
-    ref = React.createRef();
+const dialogHeader = `React common patterns`;
 
-    state = {
-        value: ""
-    };
+const dialogContent = `In this chapter we'll discuss about another popular react
+pattern named compound components. Compound components is a
+pattern in which components are used together such that they
+share an implicit state that let's them communicate with
+each other in the background.`;
 
-    submit = () => {
-        alert(`Uncontrolled input value is "${this.ref.current.value}"`);
-    };
+class Dialog extends React.Component {
+    static Header = props => (
+        <div className="dialog-header">{props.children}</div>
+    );
+
+    static Body = props => <div className="dialog-body">{props.children}</div>;
+
+    static Actions = props => (
+        <div className="dialog-actions">{props.children}</div>
+    );
 
     render() {
-      let { value } = this.state 
+        return <div className="dialog">
+            { this.props.children}
+        </div>;
+    }
+}
+
+class App extends Component {
+    render() {
         return (
-            <div className="demo first">
-                <h1 className="title">Controlled component</h1>
-                {/* <code>
-                  { JSON.stringify(this.state, null, 2) }
-                </code> */}
-                <div className="uncontrolled-input">
-                    <label>Uncontrolled component</label>
-                    <input placeholder="Uncontrolled" ref={this.ref} />
-                </div>
-                <div className="controlled-input">
-                    <label>Controlled component</label>
-                    <input
-                        placeholder="Controlled"
-                        value={value}
-                        onChange={e => this.setState({ value: e.target.value })}
-                    />
-                </div>
-                <div>
-                    <button onClick={this.submit}>Submit</button>
-                </div>
+            <div className="demo ch-5">
+                <h1 className="title">Compound component</h1>
+                <Dialog>
+                    <Dialog.Header>{ dialogHeader }</Dialog.Header>
+                    <Dialog.Body>
+                        {dialogContent}
+                    </Dialog.Body>
+                    <Dialog.Actions>
+                        <button>Close</button>
+                    </Dialog.Actions>
+                </Dialog>
             </div>
         );
     }
