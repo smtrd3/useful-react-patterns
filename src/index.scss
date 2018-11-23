@@ -136,5 +136,29 @@ ul {
         padding: 1em;
       }
     }
+
+    .toggle {
+      font-weight: bold;
+      font-size: 42px;
+      overflow: hidden;
+      border-radius: 5px;
+      box-shadow: 0 3px 20px rgba(black, .05);
+
+      > div {
+        padding: 30px;
+        cursor: pointer;
+      }
+      
+      .on {
+        color: #3498db;
+        background-color: rgba(#3498db, .1);
+      }
+
+      .off {
+        color: #e74c3c;
+        background-color: rgba(#e74c3c, .1);
+      }
+    }
+
   }
 }
